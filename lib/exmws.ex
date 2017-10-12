@@ -9,9 +9,7 @@ defmodule ExMWS do
   def get_orders do
     # Replace this with actual order numbers
     order_list = [
-      "107-6599556-3020247",
-      "108-2667812-1778632",
-      "110-7675092-1693804",
+      # Place orders here
     ]
 
     # Request the list of orders from Amazon and dump the raw results
