@@ -11,6 +11,10 @@ defmodule ExMWS.API.Products do
     ExMWS.API.format_parameters("ASINList.ASIN.", asins)
   end
 
+  defp format_idlist(ids) do
+    ExMWS.API.format_parameters("IdList.Id.", ids)
+  end
+
   @doc """
   Takes a single string value and searches for matching products on Amazon.
   """
@@ -27,10 +31,22 @@ defmodule ExMWS.API.Products do
   """
   @spec get_matching_product([String.t]) :: String.t
   def get_matching_product(asins)
-    when is_list(asins) and length(asins) <= 50 do
+    when is_list(asins) and length(asins) <= 20 do
 
     parameters = ["Action=GetMatchingProduct" | format_asins(asins)]
     ExMWS.API.generate_signed_url(:get, @path, parameters)
+  end
+
+  @spec get_matching_product_for_id([String.t]) :: String.t
+  def get_matching_product_for_id(ids, idtype)
+    when is_list(ids) and length(ids) <= 20 do
+
+    parameters = [
+      "Action=GetMatchingProductForId",
+      "IdType=#{idtype}",
+      format_idlist(ids)
+      ]
+    EXMWS.API.generate_signed_url(:get, @path, parameters)
   end
 
 end
