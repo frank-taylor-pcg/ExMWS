@@ -37,7 +37,13 @@ defmodule ExMWS.API.Products do
     ExMWS.API.generate_signed_url(:get, @path, parameters)
   end
 
-  @spec get_matching_product_for_id([String.t]) :: String.t
+  @doc """
+  Takes a list of IDs formatted as double-quoted strings and generates the
+  signed URL for the MWS Products GetMatchingProductForId operation.
+  Valid values for `idtype` are:
+    ASIN, GCID, SellerSKU, UPC, EAN, ISBN, and JAN
+  """
+  @spec get_matching_product_for_id([String.t], String.t) :: String.t
   def get_matching_product_for_id(ids, idtype)
     when is_list(ids) and length(ids) <= 20 do
 
