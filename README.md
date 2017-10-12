@@ -1,6 +1,6 @@
 # Exmws
 
-**TODO: Add description**
+ExMWS is a wrapper for the [Amazon MWS API](https://developer.amazonservices.com/gp/mws/docs.html).
 
 ## Installation
 
