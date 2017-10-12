@@ -9,13 +9,7 @@ defmodule ExMWS.API.Orders do
 
   # Converts the list of orders into a list of url encoded strings
   defp format_orders(orders) do
-    format_orders(orders, 1, [])
-  end
-
-  defp format_orders([], _, acc), do: Enum.reverse(acc)
-  defp format_orders([h|t], index, acc) do
-    current_order = "AmazonOrderId.Id.#{index}=" <> URI.encode_www_form(h)
-    format_orders(t, index + 1, [current_order | acc])
+    ExMWS.API.format_parameters("AmazonOrderId.Id.", orders)
   end
 
   @doc """
@@ -23,7 +17,9 @@ defmodule ExMWS.API.Orders do
   signed URL for the MWS Orders GetOrder operation.
   """
   @spec get_order([String.t]) :: String.t
-  def get_order(orders) when is_list(orders) and length(orders) <= 50 do
+  def get_order(orders)
+    when is_list(orders) and length(orders) <= 50 do
+
     parameters = ["Action=GetOrder" | format_orders(orders)]
     ExMWS.API.generate_signed_url(:get, @path, parameters)
   end

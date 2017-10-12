@@ -55,4 +55,14 @@ defmodule ExMWS.API do
     # HTTPoison.start
     # HTTPoison.get uri
   end
+
+  def format_parameters(identifier, parameters) do
+    format_parameters(identifier, parameters, 1, [])
+  end
+
+  defp format_parameters(_, [], _, acc), do: Enum.reverse(acc)
+  defp format_parameters(identifier, [h|t], index, acc) do
+    current_parameter = "#{identifier}.#{index}=" <> URI.encode_www_form(h)
+    format_parameters(identifier, t, index + 1, [current_parameter | acc])
+  end
 end
