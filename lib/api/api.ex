@@ -1,12 +1,18 @@
 defmodule ExMWS.API do
-  defp get_common_parameters() do
+  @moduledoc """
+  """
+
+  defp get_common_parameters do
     [
-      "AWSAccessKeyId=" <> URI.encode_www_form(Application.get_env(:exmws, :aws_access_key_id)),
-      "SellerId=" <> URI.encode_www_form(Application.get_env(:exmws, :merchant_id)),
+      "AWSAccessKeyId=" <> URI.encode_www_form(Application.get_env(:exmws,
+                                              :aws_access_key_id)),
+      "SellerId=" <> URI.encode_www_form(Application.get_env(:exmws,
+                                              :merchant_id)),
       # The docs say use version 2, but then they also say use version 4...
       "SignatureVersion=2",
       "SignatureMethod=HmacSHA256",
-      "Timestamp=" <> URI.encode_www_form(Timex.format!(Timex.local, "{ISO:Extended:Z}")),
+      "Timestamp=" <> URI.encode_www_form(Timex.format!(Timex.local,
+                                              "{ISO:Extended:Z}")),
       "Version=2013-09-01"
     ]
   end
@@ -16,8 +22,8 @@ defmodule ExMWS.API do
   end
 
   defp calculate_signature(verb, host, path, parameter_list) do
-    :crypto.hmac(
-      :sha256,
+    :sha256
+    |> :crypto.hmac(
       Application.get_env(:exmws, :aws_secret_access_key),
       Enum.join([verb, host, path, parameter_list], "\n")
     )

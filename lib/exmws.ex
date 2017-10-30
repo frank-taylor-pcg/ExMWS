@@ -6,7 +6,7 @@ defmodule ExMWS do
 
   alias ExMWS.API.Orders
 
-  def get_orders() do
+  def get_orders do
     # Replace this with actual order numbers
     order_list = [
       # Place orders here (make sure to use double-quotes)

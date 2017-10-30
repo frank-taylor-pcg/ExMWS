@@ -4,12 +4,13 @@ defmodule ExMWS.API.Orders do
   please look here:
   http://docs.developer.amazonservices.com/en_US/orders-2013-09-01/Orders_Overview.html
   """
+  use ExMWS.API
 
   @path "/Orders/2013-09-01"
 
   # Converts the list of orders into a list of url encoded strings
   defp format_orders(orders) do
-    ExMWS.API.format_parameters("AmazonOrderId.Id.", orders)
+    API.format_parameters("AmazonOrderId.Id.", orders)
   end
 
   @doc """
@@ -21,7 +22,7 @@ defmodule ExMWS.API.Orders do
     when is_list(orders) and length(orders) <= 50 do
 
     parameters = ["Action=GetOrder" | format_orders(orders)]
-    ExMWS.API.generate_signed_url(:get, @path, parameters)
+    API.generate_signed_url(:get, @path, parameters)
   end
 
   # defp list_orders, do: IO.puts "Not yet implemented"
