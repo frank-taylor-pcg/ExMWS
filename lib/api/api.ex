@@ -1,5 +1,6 @@
 defmodule ExMWS.API do
   @moduledoc """
+  Common functions that are used by multiple libraries.
   """
 
   defp get_common_parameters do
