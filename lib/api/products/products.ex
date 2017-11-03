@@ -5,14 +5,16 @@ defmodule ExMWS.API.Products do
   http://docs.developer.amazonservices.com/en_US/products/Products_Overview.html
   """
 
+  alias ExMWS.API
+
   @path "/Products/2011-10-01"
 
   defp format_asins(asins) do
-    ExMWS.API.format_parameters("ASINList.ASIN.", asins)
+    API.format_parameters("ASINList.ASIN.", asins)
   end
 
   defp format_idlist(ids) do
-    ExMWS.API.format_parameters("IdList.Id.", ids)
+    API.format_parameters("IdList.Id.", ids)
   end
 
   @doc """
@@ -20,9 +22,9 @@ defmodule ExMWS.API.Products do
   """
   @spec list_matching_products(String.t) :: String.t
   def list_matching_products(query) do
-    query_string = "Query=" <> URI.encode_www_form("query")
+    query_string = "Query=" <> URI.encode_www_form(query)
     parameters = ["Action=ListMatchingProducts" | query_string]
-    ExMWS.API.generate_signed_url(:get, @path, parameters)
+    API.generate_signed_url(:get, @path, parameters)
   end
 
   @doc """
@@ -34,7 +36,7 @@ defmodule ExMWS.API.Products do
     when is_list(asins) and length(asins) <= 20 do
 
     parameters = ["Action=GetMatchingProduct" | format_asins(asins)]
-    ExMWS.API.generate_signed_url(:get, @path, parameters)
+    API.generate_signed_url(:get, @path, parameters)
   end
 
   @doc """
@@ -52,7 +54,7 @@ defmodule ExMWS.API.Products do
       "IdType=#{idtype}",
       format_idlist(ids)
       ]
-    EXMWS.API.generate_signed_url(:get, @path, parameters)
+    API.generate_signed_url(:get, @path, parameters)
   end
 
 end

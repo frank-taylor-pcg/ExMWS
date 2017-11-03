@@ -4,7 +4,7 @@ defmodule ExMWS.API.Orders do
   please look here:
   http://docs.developer.amazonservices.com/en_US/orders-2013-09-01/Orders_Overview.html
   """
-  use ExMWS.API
+  alias ExMWS.API
 
   @path "/Orders/2013-09-01"
 
