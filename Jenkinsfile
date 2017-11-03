@@ -2,7 +2,7 @@ pipeline {
   agent any
   stages {
     stage('build') {
-      call 'elixir --version'
+      bat 'call elixir --version'
     }
   }
 }
