@@ -12,6 +12,7 @@ config :exmws,
   aws_access_key_id: "You access key ID here",
   aws_secret_access_key: "Your secret access key here"''', encoding: 'UTF-8')
         bat 'mix local.hex --force'
+        bat 'mix local.rebar --force'
         bat 'mix deps.get'
       }
     }
