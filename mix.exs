@@ -26,6 +26,7 @@ defmodule Exmws.Mixfile do
       {:httpoison, "~> 0.13.0"},
       {:timex, "~> 3.1"},
       {:credo, "~> 0.8", only: [:dev, :test], runtime: false},
+      {:junit_formatter, "~> 2.0", only: [:test]},
     ]
   end
 end
