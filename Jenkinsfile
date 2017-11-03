@@ -2,7 +2,7 @@ pipeline {
   agent any
   stages {
     stage('build') {
-      elixir --version
+      java.lang.Runtime.exec("elixir --version")
     }
   }
 }
