@@ -1,8 +1,8 @@
 pipeline {
-  agent { docker 'elixir' }
+  agent any
   stages {
     stage('build') {
-      cmd 'elixir --version'
+      elixir --version
     }
   }
 }
