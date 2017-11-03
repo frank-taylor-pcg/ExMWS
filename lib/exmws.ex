@@ -6,7 +6,7 @@ defmodule ExMWS do
 
   alias ExMWS.API.Orders
 
-  def ExMWS.hello(), do: :world
+  def hello(), do: :world
 
   def get_orders do
     # Replace this with actual order numbers
