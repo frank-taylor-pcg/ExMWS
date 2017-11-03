@@ -28,5 +28,5 @@ use Mix.Config
 # here (which is why it is important to import them last).
 #
 #     import_config "#{Mix.env}.exs"
-import_config Path.expand("./secret/mws_access_info.exs"
-                          , Path.dirname(__ENV__.file))
+import_config Path.expand("./secret/mws_access_info.exs",
+                          Path.dirname(__ENV__.file))
