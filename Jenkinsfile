@@ -8,7 +8,7 @@ pipeline {
     }
     stage('Test') {
       steps {
-        bat 'mix test'
+        bat 'call mix test'
       }
     }
   }
