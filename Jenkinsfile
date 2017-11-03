@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        pwd()
+        writeFile(file: 'config/secret/mws_access_info.exs', text: 'Dummy', encoding: 'UTF-8')
       }
     }
     stage('Test') {
