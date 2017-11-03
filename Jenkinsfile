@@ -1,9 +1,9 @@
 pipeline {
   agent any
   stages {
-    stage('build') {
+    stage('Build') {
       steps {
-        bat 'call elixir --version'
+        pwd
       }
     }
     stage('Test') {
