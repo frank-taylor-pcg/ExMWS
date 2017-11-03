@@ -3,6 +3,8 @@
 <p>
   <img src="https://img.shields.io/badge/Elixir-1.5.2-blue.svg">
   <img src="https://img.shields.io/badge/Erlang%2FOTP-20-blue.svg">
+  <img src="https://img.shields.io/badge/build-passing-brightgreen.svg">
+  <img src="https://img.shields.io/badge/coverage-abysmal-red.svg">
 </p>
 
 ExMWS is a wrapper for the [Amazon MWS API](https://developer.amazonservices.com/gp/mws/docs.html).
