@@ -1,12 +1,9 @@
 # Exmws
 
-<p>
-  <img src="https://img.shields.io/badge/Elixir-1.5.2-blue.svg">
-  <img src="https://img.shields.io/badge/Erlang%2FOTP-20-blue.svg">
-  <img src="https://img.shields.io/badge/build-passing-brightgreen.svg">
-  <img src="https://coveralls.io/repos/github/frank-taylor-pcg/ExMWS/badge.svg">
-  <img src="https://img.shields.io/badge/license-MIT-lightgrey.svg">
-</p>
+![Coverage](https://img.shields.io/coveralls/github/frank-taylor-pcg/ExMWS.svg)
+![Elixir Version](https://img.shields.io/badge/Elixir-1.5.2-blue.svg)
+![Erlang Version](https://img.shields.io/badge/Erlang%2FOTP-20-blue.svg)
+![License](https://img.shields.io/badge/license-MIT-lightgrey.svg)
 
 ExMWS is a wrapper for the [Amazon MWS API](https://developer.amazonservices.com/gp/mws/docs.html).
 
