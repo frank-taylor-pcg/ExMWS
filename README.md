@@ -4,7 +4,7 @@
   <img src="https://img.shields.io/badge/Elixir-1.5.2-blue.svg">
   <img src="https://img.shields.io/badge/Erlang%2FOTP-20-blue.svg">
   <img src="https://img.shields.io/badge/build-passing-brightgreen.svg">
-  <img src="https://img.shields.io/badge/coverage-abysmal-red.svg">
+  [![Coverage Status](https://coveralls.io/repos/github/frank-taylor-pcg/ExMWS/badge.svg)](https://coveralls.io/github/frank-taylor-pcg/ExMWS)
   <img src="https://img.shields.io/badge/license-MIT-lightgrey.svg">
 </p>
 
