@@ -23,9 +23,9 @@ config :exmws,
     }
     stage('Update coveralls.io') {
       steps {
-        echo ${env.Coverall_Token}
-        echo ${env.GIT_BRANCH}
-        echo ${env.GIT_COMMIT}
+        echo "${env.Coverall_Token}"
+        echo "${env.GIT_BRANCH}"
+        echo "${env.GIT_COMMIT}"
       }
     }
   }
