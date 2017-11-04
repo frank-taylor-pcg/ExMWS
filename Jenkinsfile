@@ -22,13 +22,10 @@ config :exmws,
       }
     }
     stage('Update coveralls.io') {
-      environment {
-        COVERALL_TOKEN = credentials('Coverall_Token')
-      }
       steps {
-        echo COVERALL_TOKEN
-        echo GIT_BRANCH
-        echo GIT_COMMIT
+        echo ${env.Coverall_Token}
+        echo ${env.GIT_BRANCH}
+        echo ${env.GIT_COMMIT}
       }
     }
   }
