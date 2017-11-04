@@ -23,7 +23,7 @@ config :exmws,
     }
     stage('Update coveralls.io') {
       steps {
-        bat 'call mix coveralls.post -t $Coverall_Token -b $GIT_BRANCH -s $GIT_COMMIT
+        bat 'call mix coveralls.post -t "$Coverall_Token" -b "$GIT_BRANCH" -s "$GIT_COMMIT"
       }
     }
   }
