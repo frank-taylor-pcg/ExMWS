@@ -9,12 +9,28 @@ defmodule ExMWS.API.Products do
 
   @path "/Products/2011-10-01"
 
-  defp format_asins(asins) do
-    API.format_parameters("ASINList.ASIN.", asins)
+  @doc """
+  Converts the list of ASINs into a list of url encoded strings
+
+  Examples
+
+    iex> ExMWS.API.Products.format_asins(["1", "2", "3"])
+    ["ASINList.ASIN.1=1", "ASINList.ASIN.2=2", "ASINList.ASIN.3=3"]
+  """
+  def format_asins(asins) do
+    API.format_parameters("ASINList.ASIN", asins)
   end
 
-  defp format_idlist(ids) do
-    API.format_parameters("IdList.Id.", ids)
+  @doc """
+  Converts the list of IDs into a list of url encoded strings
+
+  Examples
+
+    iex> ExMWS.API.Products.format_idlist(["1", "2", "3"])
+    ["IdList.Id.1=1", "IdList.Id.2=2", "IdList.Id.3=3"]
+  """
+  def format_idlist(ids) do
+    API.format_parameters("IdList.Id", ids)
   end
 
   @doc """
@@ -23,7 +39,7 @@ defmodule ExMWS.API.Products do
   @spec list_matching_products(String.t) :: String.t
   def list_matching_products(query) do
     query_string = "Query=" <> URI.encode_www_form(query)
-    parameters = ["Action=ListMatchingProducts" | query_string]
+    parameters = ["Action=ListMatchingProducts", query_string]
     API.generate_signed_url(:get, @path, parameters)
   end
 
@@ -52,8 +68,7 @@ defmodule ExMWS.API.Products do
     parameters = [
       "Action=GetMatchingProductForId",
       "IdType=#{idtype}",
-      format_idlist(ids)
-      ]
+      ] ++ format_idlist(ids)
     API.generate_signed_url(:get, @path, parameters)
   end
 

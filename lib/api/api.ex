@@ -18,7 +18,7 @@ defmodule ExMWS.API do
     ]
   end
 
-  defp calculate_signature(:get, host, path, parameter_list) do
+  defp calculate_get_signature(host, path, parameter_list) do
     calculate_signature("GET", host, path, parameter_list)
   end
 
@@ -40,10 +40,13 @@ defmodule ExMWS.API do
     |> Enum.join("&")
   end
 
+  @doc """
+  This generates the final, signed URL for our request to the Amazon MWS API.
+  """
   def generate_signed_url(:get, path, parameters) do
     host = Application.get_env(:exmws, :endpoint)
     parameter_list = build_unsigned_parameter_list(parameters)
-    signature = calculate_signature(:get, host, path, parameter_list)
+    signature = calculate_get_signature(host, path, parameter_list)
 
     query = "#{parameter_list}&Signature=#{signature}"
 
@@ -54,7 +57,8 @@ defmodule ExMWS.API do
       query: query
     }
 
-    IO.puts uri
+    URI.to_string(uri)
+    # IO.puts uri
     # I'm not sure how to use HTTPoison properly - this is the only part that
     # doesn't work yet. If you cut and paste the uri variable into the browser
     # you get the data, so everything up to these last two lines is working
@@ -63,6 +67,14 @@ defmodule ExMWS.API do
     # HTTPoison.get uri
   end
 
+  @doc """
+  Builds a formatted list of parameters suitable for injection into a URL.
+
+  Examples
+
+    iex> ExMWS.API.format_parameters("Test", ["1", "2", "3"])
+    ["Test.1=1", "Test.2=2", "Test.3=3"]
+  """
   def format_parameters(identifier, parameters) do
     format_parameters(identifier, parameters, 1, [])
   end

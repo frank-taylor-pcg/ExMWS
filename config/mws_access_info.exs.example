@@ -5,5 +5,5 @@ config :exmws,
   endpoint: "mws.amazonservices.com",
   marketplace_id: "ATVPDKIKX0DER",
   merchant_id: "Your merchant ID here",
-  aws_access_key_id: "You access key ID here",
+  aws_access_key_id: "Your access key ID here",
   aws_secret_access_key: "Your secret access key here"

@@ -8,9 +8,16 @@ defmodule ExMWS.API.Orders do
 
   @path "/Orders/2013-09-01"
 
-  # Converts the list of orders into a list of url encoded strings
-  defp format_orders(orders) do
-    API.format_parameters("AmazonOrderId.Id.", orders)
+  @doc """
+  Converts the list of orders into a list of url encoded strings
+
+  Examples
+
+    iex> ExMWS.API.Orders.format_orders(["1", "2", "3"])
+    ["AmazonOrderId.Id.1=1", "AmazonOrderId.Id.2=2", "AmazonOrderId.Id.3=3"]
+  """
+  def format_orders(orders) do
+    API.format_parameters("AmazonOrderId.Id", orders)
   end
 
   @doc """
@@ -38,8 +45,8 @@ defmodule ExMWS.API.Orders do
   # end
 
   # The remaining portions of the Order API that I haven't started working on.
-  def list_orders_by_next_token, do: IO.puts "Not yet implemented"
-  def list_order_items, do: IO.puts "Not yet implemented"
-  def list_order_items_by_next_token, do: IO.puts "Not yet implemented"
-  def get_service_status, do: IO.puts "Not yet implemented"
+  # def list_orders_by_next_token, do: IO.puts "Not yet implemented"
+  # def list_order_items, do: IO.puts "Not yet implemented"
+  # def list_order_items_by_next_token, do: IO.puts "Not yet implemented"
+  # def get_service_status, do: IO.puts "Not yet implemented"
 end
