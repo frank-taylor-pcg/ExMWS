@@ -23,8 +23,7 @@ config :exmws,
     }
     stage('Update coveralls.io') {
       steps {
-        bat 'call set sha=git rev-parse origin/master'
-        bat 'call mix coveralls.post -t %Coverall_Token% -b "master" -s "%sha%"'
+        bat 'call mix coveralls.post -t $Coverall_Token -b $GIT_BRANCH -s $GIT_COMMIT
       }
     }
   }
