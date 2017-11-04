@@ -22,8 +22,13 @@ config :exmws,
       }
     }
     stage('Update coveralls.io') {
+      environment {
+        COVERALL_TOKEN = credentials('Coverall_Token')
+      }
       steps {
-        bat 'call mix coveralls.post -t "$Coverall_Token" -b "$GIT_BRANCH" -s "$GIT_COMMIT"
+        echo COVERALL_TOKEN
+        echo GIT_BRANCH
+        echo GIT_COMMIT
       }
     }
   }
